@@ -346,6 +346,14 @@ a:hover {
   padding-top: 1rem;
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9rem;
+}
+
 .interactive-shell {
   border: 1px dashed var(--border);
   border-radius: 14px;

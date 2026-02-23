@@ -2,8 +2,7 @@
 const links = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/notes", label: "Notes" },
-  { href: "/resume", label: "Resume" }
+  { href: "/notes", label: "Notes" }
 ];
 
 const normalize = (path: string) => (path === "/" ? path : path.replace(/\/$/, ""));
@@ -18,7 +17,10 @@ const currentPath = normalize(Astro.url.pathname);
         {
           links.map((link) => (
             <li>
-              <a class={currentPath === normalize(link.href) ? "active" : ""} href={link.href}>
+              <a
+                class={currentPath === normalize(link.href) ? "active" : ""}
+                href={link.href}
+              >
                 {link.label}
               </a>
             </li>

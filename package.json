@@ -14,8 +14,11 @@
     "@astrojs/react": "^4.3.0",
     "@astrojs/sitemap": "^3.2.1",
     "astro": "^5.3.1",
+    "katex": "^0.16.33",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",

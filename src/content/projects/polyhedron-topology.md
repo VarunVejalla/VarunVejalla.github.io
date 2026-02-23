@@ -1,5 +1,5 @@
 ---
-title: "Polyhedron Topology Tool"
+title: "Polyhedron Topology Tool (in progress)"
 summary: "Interactive client-side tool for experimenting with polyhedron topology and projections."
 date: 2026-01-15
 repoUrl: "https://github.com/VarunVejalla/polyhedron-topology"

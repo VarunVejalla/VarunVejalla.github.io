@@ -1,0 +1,19 @@
+---
+import InteractiveCounter from "../../components/InteractiveCounter";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Interactive Demo | Projects"
+  description="Client-side React island embedded inside the Astro site."
+>
+  <section class="card">
+    <p class="eyebrow">Interactive Demo</p>
+    <h1>Client-side React component inside Astro</h1>
+    <p class="muted">
+      This route demonstrates how to host an interactive tool without a backend. Replace the placeholder React component
+      with your actual project UI.
+    </p>
+    <InteractiveCounter client:load />
+  </section>
+</BaseLayout>

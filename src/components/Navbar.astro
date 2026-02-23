@@ -1,0 +1,30 @@
+---
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/notes", label: "Notes" },
+  { href: "/resume", label: "Resume" }
+];
+
+const normalize = (path: string) => (path === "/" ? path : path.replace(/\/$/, ""));
+const currentPath = normalize(Astro.url.pathname);
+---
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="/" class="brand">Varun Vejalla</a>
+    <nav aria-label="Primary">
+      <ul class="nav-list">
+        {
+          links.map((link) => (
+            <li>
+              <a class={currentPath === normalize(link.href) ? "active" : ""} href={link.href}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

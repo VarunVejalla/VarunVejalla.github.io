@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "../components/ProjectCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Projects | Varun Vejalla" description="Project portfolio with static and interactive demos.">
+  <section class="card">
+    <p class="eyebrow">Projects</p>
+    <h1>Things I have built</h1>
+    <p class="muted">
+      Use this page as your project index. Keep each entry practical: problem, implementation highlights, and links.
+    </p>
+  </section>
+
+  <section class="section-block">
+    <div class="grid project-grid">
+      {projects.map((project) => <ProjectCard slug={project.slug} data={project.data} />)}
+    </div>
+  </section>
+</BaseLayout>

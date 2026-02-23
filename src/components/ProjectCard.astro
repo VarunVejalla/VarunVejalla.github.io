@@ -1,0 +1,44 @@
+---
+interface ProjectData {
+  title: string;
+  summary: string;
+  date: Date;
+  repoUrl: string;
+  liveUrl?: string;
+  image?: string;
+  technologies: string[];
+  interactive?: boolean;
+}
+
+interface Props {
+  slug: string;
+  data: ProjectData;
+}
+
+const { slug, data } = Astro.props;
+const dateLabel = data.date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+---
+
+<article class="card project-card">
+  {data.image && <img class="project-media" src={data.image} alt={`${data.title} preview`} loading="lazy" />}
+  <div class="project-body">
+    <p class="date-label">{dateLabel}</p>
+    <h3><a href={`/projects/${slug}`}>{data.title}</a></h3>
+    <p>{data.summary}</p>
+    <div class="tag-row">
+      {data.technologies.map((tech) => <span class="tag">{tech}</span>)}
+      {data.interactive && <span class="tag">Interactive</span>}
+    </div>
+    <div class="meta-row">
+      <a href={`/projects/${slug}`}>Read more</a>
+      <div class="meta-links">
+        <a href={data.repoUrl} target="_blank" rel="noreferrer">GitHub</a>
+        {data.liveUrl && (
+          <a href={data.liveUrl} target={data.liveUrl.startsWith("/") ? "_self" : "_blank"} rel="noreferrer">
+            Live demo
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</article>

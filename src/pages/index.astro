@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "../components/ProjectCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const featuredProjects = projects.filter((project) => project.data.featured).slice(0, 3);
+
+const notes = (await getCollection("notes", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const recentNotes = notes.slice(0, 3);
+---
+
+<BaseLayout
+  title="Varun Vejalla | Home"
+  description="Personal website with projects, notes, and a resume."
+>
+  <section class="hero card">
+    <p class="eyebrow">Software Engineer</p>
+    <h1>Building practical tools and documenting what I learn.</h1>
+    <p>
+      This is a clean starter for your portfolio website. Use this homepage for a short intro, featured work,
+      and easy navigation to projects, notes, and your resume.
+    </p>
+    <div class="link-row">
+      <a class="button" href="/projects">View Projects</a>
+      <a class="button outline" href="/notes">Read Notes</a>
+      <a class="button outline" href="/resume">Resume</a>
+    </div>
+    <div class="link-row compact">
+      <a href="https://github.com/your-username" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-header">
+      <h2 class="section-title">Featured Projects</h2>
+      <a href="/projects">See all projects</a>
+    </div>
+    <div class="grid project-grid">
+      {featuredProjects.map((project) => <ProjectCard slug={project.slug} data={project.data} />)}
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-header">
+      <h2 class="section-title">Recent Notes</h2>
+      <a href="/notes">See all notes</a>
+    </div>
+    <ul class="list-clean">
+      {
+        recentNotes.map((note) => (
+          <li class="list-item">
+            <p class="date-label">
+              {note.data.date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+            </p>
+            <h3>
+              <a href={`/notes/${note.slug}`}>{note.data.title}</a>
+            </h3>
+            <p>{note.data.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

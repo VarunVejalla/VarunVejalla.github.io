@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const notes = (await getCollection("notes", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Notes | Varun Vejalla" description="Short notes and blog-style writing.">
+  <section class="card">
+    <p class="eyebrow">Notes</p>
+    <h1>Short write-ups and learnings</h1>
+    <p class="muted">
+      Keep notes concise and useful. Over time, this can become your blog archive without adding much maintenance.
+    </p>
+  </section>
+
+  <section class="section-block">
+    <ul class="list-clean">
+      {
+        notes.map((note) => (
+          <li class="list-item">
+            <p class="date-label">
+              {note.data.date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+            </p>
+            <h3>
+              <a href={`/notes/${note.slug}`}>{note.data.title}</a>
+            </h3>
+            <p>{note.data.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

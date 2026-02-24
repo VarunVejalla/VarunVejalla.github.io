@@ -26,6 +26,22 @@ while learning private cost embeddings per agent.
 
 We generated two-agent collision-avoidance trajectories from a MaxEnt-MADG setup, trained on those trajectories, and evaluated predicted vs true trajectories qualitatively.
 
+## Architecture
+
+![Dynamic cost learning model architecture](/images/projects/architecture.png)
+
+The model is organized as a chained pipeline with shared state and agent-specific embeddings:
+
+- **PolicyNet** takes the global state and private cost embeddings, then predicts controls for both agents.
+- **DynamicsNet** takes current state plus controls and predicts the next state.
+- **CostNet** takes state, controls, and embeddings to estimate each agent's cost.
+
+Training couples these components so the system learns:
+
+- controls that match demonstrated behavior,
+- state transitions that stay physically plausible, and
+- cost representations that explain observed trajectories under bounded-rational play.
+
 ## Project Links
 
 - Full report (PDF): [/writeups/multi-robot-navigation-guided-cost-learning.pdf](/writeups/multi-robot-navigation-guided-cost-learning.pdf)

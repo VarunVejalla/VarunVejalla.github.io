@@ -4,6 +4,7 @@ summary: "Interactive client-side tool for experimenting with polyhedron topolog
 date: 2026-01-15
 repoUrl: "https://github.com/VarunVejalla/polyhedron-topology"
 liveUrl: "https://varunvejalla.github.io/polyhedron-topology/"
+image: "/images/projects/polyhedron_example.jpg"
 
 technologies:
   - TypeScript

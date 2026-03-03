@@ -8,7 +8,7 @@ tags:
 date: 2026-03-02
 ---
 
-This is a follow-up to [Kimberly Wood's senior project](https://e.math.cornell.edu/people/belk/projects/KimberlyWood.pdf). I first heard about this problem through [3cycle's YouTube video](https://youtu.be/b39e3UfNNYQ?si=BE8yY0MhjqpL4605).
+This is a follow-up to [Kimberly Wood's senior project](https://e.math.cornell.edu/people/belk/projects/KimberlyWood.pdf). I first heard about this problem through [3cycle's YouTube video](https://youtu.be/b39e3UfNNYQ?si=BE8yY0MhjqpL4605), where 3cycle showed that $\phi(2)=7$.
 
 ## Problem
 
